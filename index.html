@@ -7,65 +7,70 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      /* Leuke achtergrond met een lichte gradient */
+      background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
+      background-attachment: fixed;
     }
     .container {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       text-align: center;
       width: 90%;
       max-width: 600px;
+      padding: 20px;
     }
     h1 {
       color: #333;
+      margin-bottom: 20px;
     }
     .cheque {
-      border: 2px dashed #333;
-      padding: 20px;
-      border-radius: 5px;
-      margin-top: 20px;
       position: relative;
-      background: #fafafa;
+      background: #FFD700;
+      border: 4px dashed #b8860b;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      /* Perforatieranden boven en onder */
     }
-    .cheque::before,
-    .cheque::after {
-      content: "";
+    .cheque::before, .cheque::after {
+      content: '';
       position: absolute;
-      width: 10px;
+      left: 0;
+      right: 0;
       height: 10px;
-      background: #f5f5f5;
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
+      background: repeating-linear-gradient(
+        90deg,
+        #e0f7fa,
+        #e0f7fa 10px,
+        transparent 10px,
+        transparent 20px
+      );
     }
-    .cheque::before { left: -6px; }
-    .cheque::after { right: -6px; }
+    .cheque::before { top: -10px; }
+    .cheque::after { bottom: -10px; }
     .bike {
       font-size: 4rem;
+      margin-bottom: 10px;
     }
     .amount {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: bold;
       margin: 10px 0;
+      color: #8b4513;
     }
-    .details {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
+    .message {
+      font-size: 1rem;
       margin-top: 10px;
+      color: #333;
     }
     footer {
       margin-top: 30px;
       font-size: 0.8rem;
-      color: #777;
+      color: #555;
     }
   </style>
 </head>
@@ -75,15 +80,9 @@
     <div class="cheque">
       <div class="bike">🚴‍♂️</div>
       <div class="amount">€20</div>
-      <p>Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
-      <div class="details">
-        <span>Naam: ________________</span>
-        <span>Datum: __/__/2025</span>
-      </div>
+      <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
     </div>
-    <footer>
-      Met liefde gegeven op Vaderdag 2025
-    </footer>
+    <footer>Met liefde gegeven op Vaderdag 2025</footer>
   </div>
 </body>
 </html>
