@@ -33,22 +33,28 @@
       padding: 20px;
       z-index: 1;
     }
-    /* Cadeautje afbeelding animatie */
+    /* Envelop-gift styling */
     @keyframes jiggle {
-      0%, 100% { transform: rotate(0deg) scale(1); }
+      0%,100% { transform: rotate(0deg) scale(1); }
       25% { transform: rotate(5deg) scale(1.05); }
-      50% { transform: rotate(0deg) scale(1.1); }
+      50% { transform: rotate(0deg) scale(1.15); }
       75% { transform: rotate(-5deg) scale(1.05); }
     }
     .gift {
-      width: 200px;
+      font-size: 12rem; /* Eye-catcher formaat */
       cursor: pointer;
       animation: jiggle 2s ease-in-out infinite;
-      transition: opacity 0.5s;
+      display: inline-block;
+      margin-bottom: 10px;
     }
-    /* Verberg cheque standaard */
-    .cheque-link {
-      text-decoration: none;
+    .gift-text {
+      font-size: 1.4rem;
+      color: #333;
+      margin-top: 10px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+    /* Verberg cheque-sectie standaard */
+    #cheque-section {
       display: none;
     }
     /* Foto papa */
@@ -78,6 +84,10 @@
       50% { transform: rotate(0deg); }
       75% { transform: rotate(-3deg); }
       100% { transform: rotate(0deg); }
+    }
+    .cheque-link {
+      text-decoration: none;
+      display: inline-block;
     }
     .cheque {
       position: relative;
@@ -111,13 +121,15 @@
 </head>
 <body>
   <div class="container">
-    <!-- Cadeautje eerst -->
-    <img src="assests/gift.png" alt="Vaderdag Cadeau" class="gift" id="gift">
-    <!-- Na klik: cheque en rest -->
+    <!-- Grote envelop emoji als knop -->
+    <div id="gift" class="gift">✉️</div>
+    <div class="gift-text">Klik hier voor Vaderdag cadeau</div>
+
+    <!-- Na klik: cheque en papa-foto -->
     <div id="cheque-section">
       <img src="assests/vader.png" alt="Papa wielrennen" class="father-photo">
       <h1>Fijne Vaderdag, Papa!</h1>
-      <a href="https://www.12gobiking.nl/" target="_blank" rel="noopener" class="cheque-link" id="chequeLink">
+      <a href="https://www.12gobiking.nl/" target="_blank" rel="noopener" class="cheque-link">
         <div class="cheque">
           <div class="bike">🚴‍♂️</div>
           <div class="amount">€20</div>
@@ -129,12 +141,12 @@
   </div>
   <script>
     const gift = document.getElementById('gift');
-    const chequeLink = document.getElementById('chequeLink');
+    const badgeText = document.querySelector('.gift-text');
+    const chequeSection = document.getElementById('cheque-section');
     gift.addEventListener('click', () => {
-      gift.style.opacity = '0';
-      setTimeout(() => gift.style.display = 'none', 500);
-      // toon cheque link
-      chequeLink.style.display = 'inline-block';
+      gift.style.display = 'none';
+      badgeText.style.display = 'none';
+      chequeSection.style.display = 'block';
     });
   </script>
 </body>
