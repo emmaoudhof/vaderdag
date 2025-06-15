@@ -94,6 +94,37 @@
       background: #FFD700;
       border: 4px dashed #b8860b;
       border-radius: 15px;
+      padding: 30px 60px;  /* Grotere padding voor extra lengte */
+      width: 100%;
+      max-width: 600px;  /* Ietsje langer */
+      margin: 0 auto;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      animation: sway 2s ease-in-out infinite;
+      transition: transform 0.2s ease;
+    }
+    .link-info {
+      font-size: 0.9rem;
+      color: #0056b3;
+      margin-top: 5px;
+      text-transform: uppercase;
+    }
+
+    .link-info::after {
+      content: '';
+      display: inline-block;
+      margin-left: 5px;
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid #0056b3;
+    }
+
+
+    .cheque {
+      position: relative;
+      background: #FFD700;
+      border: 4px dashed #b8860b;
+      border-radius: 15px;
       padding: 30px 20px;
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
       cursor: pointer;
@@ -134,7 +165,7 @@
           <div class="bike">🚴‍♂️</div>
           <div class="amount">€20</div>
           <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
-          <p class="message">Klik om te verzilveren.</p>
+          <p class="message">Klik om te verzilveren!</p>
         </div>
       </a>
       <footer>Met liefde gegeven op Vaderdag 2025</footer>
