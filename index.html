@@ -13,7 +13,6 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      /* Leuke achtergrond met een lichte gradient */
       background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
       background-attachment: fixed;
     }
@@ -22,6 +21,15 @@
       width: 90%;
       max-width: 600px;
       padding: 20px;
+    }
+    .father-photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #b8860b;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     h1 {
       color: #333;
@@ -34,7 +42,6 @@
       border-radius: 15px;
       padding: 30px 20px;
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-      /* Perforatieranden boven en onder */
     }
     .cheque::before, .cheque::after {
       content: '';
@@ -76,6 +83,8 @@
 </head>
 <body>
   <div class="container">
+    <!-- Voeg hier de foto van je vader toe in de assets-map als vader.png -->
+    <img src="assets/vader.png" alt="Papa wielrennen" class="father-photo">
     <h1>Fijne Vaderdag, Papa!</h1>
     <div class="cheque">
       <div class="bike">🚴‍♂️</div>
