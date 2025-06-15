@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaderdag Cadeaubon</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+    }
+    h1 {
+      color: #333;
+    }
+    .cheque {
+      border: 2px dashed #333;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      position: relative;
+      background: #fafafa;
+    }
+    .cheque::before,
+    .cheque::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .cheque::before { left: -6px; }
+    .cheque::after { right: -6px; }
+    .bike {
+      font-size: 4rem;
+    }
+    .amount {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .details {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fijne Vaderdag, Papa!</h1>
+    <div class="cheque">
+      <div class="bike">🚴‍♂️</div>
+      <div class="amount">€20</div>
+      <p>Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
+      <div class="details">
+        <span>Naam: ________________</span>
+        <span>Datum: __/__/2025</span>
+      </div>
+    </div>
+    <footer>
+      Met liefde gegeven op Vaderdag 2025
+    </footer>
+  </div>
+</body>
+</html>
