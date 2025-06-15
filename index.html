@@ -54,7 +54,10 @@
       margin-bottom: 20px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-    /* Cheque als schommelend ticket */
+    /* Cheque als link en schommelend ticket */
+    .cheque-link {
+      text-decoration: none;
+    }
     .cheque {
       position: relative;
       background: #FFD700;
@@ -121,11 +124,14 @@
     <!-- Zorg dat assets-map nu correct heet en bewaar hier vader.png -->
     <img src="assests/vader.png" alt="Papa wielrennen" class="father-photo">
     <h1>Fijne Vaderdag, Papa!</h1>
-    <div class="cheque">
-      <div class="bike">🚴‍♂️</div>
-      <div class="amount">€20</div>
-      <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
-    </div>
+    <!-- Klikbare cheque leidt naar 12gobiking.nl in nieuw tabblad -->
+    <a href="https://www.12gobiking.nl/" target="_blank" rel="noopener" class="cheque-link">
+      <div class="cheque">
+        <div class="bike">🚴‍♂️</div>
+        <div class="amount">€20</div>
+        <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
+      </div>
+    </a>
     <footer>Met liefde gegeven op Vaderdag 2025</footer>
   </div>
 </body>
