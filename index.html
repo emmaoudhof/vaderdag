@@ -27,14 +27,31 @@
       overflow: hidden;
     }
     .container {
-      position: relative;
       text-align: center;
       width: 90%;
       max-width: 600px;
       padding: 20px;
       z-index: 1;
     }
-    /* Ronde foto met snellere en iets grotere pulsatie */
+    /* Cadeautje afbeelding animatie */
+    @keyframes jiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(5deg) scale(1.05); }
+      50% { transform: rotate(0deg) scale(1.1); }
+      75% { transform: rotate(-5deg) scale(1.05); }
+    }
+    .gift {
+      width: 200px;
+      cursor: pointer;
+      animation: jiggle 2s ease-in-out infinite;
+      transition: opacity 0.5s;
+    }
+    /* Verberg cheque standaard */
+    .cheque-link {
+      text-decoration: none;
+      display: none;
+    }
+    /* Foto papa */
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
@@ -45,7 +62,7 @@
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid #b8860b;
-      margin-bottom: 20px;
+      margin: 20px auto;
       box-shadow: 0 6px 10px rgba(0,0,0,0.2);
       animation: pulse 3s ease-in-out infinite;
     }
@@ -54,9 +71,13 @@
       margin-bottom: 20px;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
-    /* Cheque als link en schommelend ticket */
-    .cheque-link {
-      text-decoration: none;
+    /* Cheque animatie */
+    @keyframes sway {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(3deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
     }
     .cheque {
       position: relative;
@@ -65,74 +86,56 @@
       border-radius: 15px;
       padding: 30px 20px;
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
       cursor: pointer;
+      animation: sway 2s ease-in-out infinite;
+      transition: transform 0.2s ease;
     }
     .cheque:hover {
       transform: rotate(-3deg) scale(1.07);
+      animation-play-state: paused;
     }
     .cheque::before, .cheque::after {
       content: '';
       position: absolute;
-      left: 0;
-      right: 0;
-      height: 10px;
-      background: repeating-linear-gradient(
-        90deg,
-        #e0f7fa,
-        #e0f7fa 8px,
-        transparent 8px,
-        transparent 16px
-      );
+      left: 0; right: 0; height: 10px;
+      background: repeating-linear-gradient(90deg, #e0f7fa, #e0f7fa 8px, transparent 8px, transparent 16px);
     }
     .cheque::before { top: -10px; }
     .cheque::after { bottom: -10px; }
-    /* Springend fiets-icoon */
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    .bike {
-      font-size: 4.5rem;
-      margin-bottom: 10px;
-      display: inline-block;
-      animation: bounce 2s ease infinite;
-    }
-    .amount {
-      font-size: 3rem;
-      font-weight: bold;
-      margin: 10px 0;
-      color: #8b4513;
-      text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
-    }
-    .message {
-      font-size: 1.1rem;
-      margin-top: 10px;
-      color: #333;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
-    }
-    footer {
-      margin-top: 30px;
-      font-size: 0.8rem;
-      color: #555;
-      opacity: 0.8;
-    }
+    .bike { font-size: 4.5rem; margin-bottom: 10px; display: inline-block; animation: bounce 2s ease infinite; }
+    @keyframes bounce { 0%,100%{transform: translateY(0);}50%{transform: translateY(-12px);} }
+    .amount { font-size: 3rem; font-weight: bold; margin: 10px 0; color: #8b4513; text-shadow: 1px 1px 0 rgba(255,255,255,0.5);}    
+    .message { font-size: 1.1rem; margin-top: 10px; color: #333; text-shadow: 1px 1px 1px rgba(0,0,0,0.05);}    
+    footer { margin-top: 30px; font-size: 0.8rem; color: #555; opacity: 0.8; }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Zorg dat assets-map nu correct heet en bewaar hier vader.png -->
-    <img src="assests/vader.png" alt="Papa wielrennen" class="father-photo">
-    <h1>Fijne Vaderdag, Papa!</h1>
-    <!-- Klikbare cheque leidt naar 12gobiking.nl in nieuw tabblad -->
-    <a href="https://www.12gobiking.nl/" target="_blank" rel="noopener" class="cheque-link">
-      <div class="cheque">
-        <div class="bike">🚴‍♂️</div>
-        <div class="amount">€20</div>
-        <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
-      </div>
-    </a>
-    <footer>Met liefde gegeven op Vaderdag 2025</footer>
+    <!-- Cadeautje eerst -->
+    <img src="assests/gift.png" alt="Vaderdag Cadeau" class="gift" id="gift">
+    <!-- Na klik: cheque en rest -->
+    <div id="cheque-section">
+      <img src="assests/vader.png" alt="Papa wielrennen" class="father-photo">
+      <h1>Fijne Vaderdag, Papa!</h1>
+      <a href="https://www.12gobiking.nl/" target="_blank" rel="noopener" class="cheque-link" id="chequeLink">
+        <div class="cheque">
+          <div class="bike">🚴‍♂️</div>
+          <div class="amount">€20</div>
+          <p class="message">Deze cadeaubon is geldig voor alle wieleraccessoires.</p>
+        </div>
+      </a>
+      <footer>Met liefde gegeven op Vaderdag 2025</footer>
+    </div>
   </div>
+  <script>
+    const gift = document.getElementById('gift');
+    const chequeLink = document.getElementById('chequeLink');
+    gift.addEventListener('click', () => {
+      gift.style.opacity = '0';
+      setTimeout(() => gift.style.display = 'none', 500);
+      // toon cheque link
+      chequeLink.style.display = 'inline-block';
+    });
+  </script>
 </body>
 </html>
