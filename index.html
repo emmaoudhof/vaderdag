@@ -4,44 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vaderdag Cadeaubon</title>
+  <!-- Speelse Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Geanimeerde achtergrondgradient */
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Comic Neue', cursive;
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #e0f7fa, #ffe0b2);
-      background-attachment: fixed;
+      background: linear-gradient(-45deg, #e0f7fa, #ffe0b2, #ffecb3, #b3e5fc);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      overflow: hidden;
     }
     .container {
+      position: relative;
       text-align: center;
       width: 90%;
       max-width: 600px;
       padding: 20px;
+      z-index: 1;
+    }
+    /* Ronde foto met subtiele pulsatie */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
     .father-photo {
-      width: 150px;
-      height: 150px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
       border-radius: 50%;
       border: 4px solid #b8860b;
       margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      animation: pulse 4s ease-in-out infinite;
     }
     h1 {
       color: #333;
       margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
+    /* Cheque als schommelend ticket */
     .cheque {
       position: relative;
       background: #FFD700;
       border: 4px dashed #b8860b;
       border-radius: 15px;
       padding: 30px 20px;
-      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .cheque:hover {
+      transform: rotate(-3deg) scale(1.07);
     }
     .cheque::before, .cheque::after {
       content: '';
@@ -52,38 +77,48 @@
       background: repeating-linear-gradient(
         90deg,
         #e0f7fa,
-        #e0f7fa 10px,
-        transparent 10px,
-        transparent 20px
+        #e0f7fa 8px,
+        transparent 8px,
+        transparent 16px
       );
     }
     .cheque::before { top: -10px; }
     .cheque::after { bottom: -10px; }
+    /* Springend fiets-icoon */
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
     .bike {
-      font-size: 4rem;
+      font-size: 4.5rem;
       margin-bottom: 10px;
+      display: inline-block;
+      animation: bounce 2s ease infinite;
     }
     .amount {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: bold;
       margin: 10px 0;
       color: #8b4513;
+      text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
     }
     .message {
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-top: 10px;
       color: #333;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.05);
     }
     footer {
       margin-top: 30px;
       font-size: 0.8rem;
       color: #555;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Voeg hier de foto van je vader toe in de assets-map als vader.png -->
+    <!-- Zorg dat assets-map nu correct heet en bewaar hier vader.png -->
     <img src="assests/vader.png" alt="Papa wielrennen" class="father-photo">
     <h1>Fijne Vaderdag, Papa!</h1>
     <div class="cheque">
